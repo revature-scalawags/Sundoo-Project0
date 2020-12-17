@@ -1,6 +1,7 @@
 package submissions
 
 import scala.collection.mutable.ArrayBuffer
+import scala.collection.mutable.Map
 
 object RequestsByHondaOnwers extends App {
   println()
@@ -31,34 +32,42 @@ object RequestsByHondaOnwers extends App {
   }
   println("Pulling the data...")
 
-  for (i <- 1 to 9) {
-    val test = lineToArrayBuffer.apply(i)
-    val testArray = test.split(",", -1)
-    if (testArray.length <= 1) {} else {
-      val testArrayColumn2 = test.split(",", -1)(1)
-      if (testArrayColumn2.isEmpty()) {
-        println("it's empty")
-      } else {
-        println("it's not empty")
-      }
-    }
-  }
-
   //println(testArray)
   //testArray.foreach(println)
 
-  var MakersInSubmission = ArrayBuffer[String]()
+  var makersInSubmission = ArrayBuffer[String]()
   for (i <- lineToArrayBuffer) {
-    val OutOfBoundExceptionCheck = i.split(",", -1).length
-    if (OutOfBoundExceptionCheck > 1) {
-      val maker = i.split(",", -1)(columnOfMake - 1)
+    val outOfBoundExceptionCheck = i.split(",", -1).length
+    if (outOfBoundExceptionCheck > 1) {
+      val maker = i.split(",", -1)(columnOfMake - 1).toUpperCase()
       if (!maker.isEmpty()) {
-          MakersInSubmission += maker
+        makersInSubmission += maker
       }
     }
   }
 
-  MakersInSubmission.foreach(println)
+  //Content Check if the output is really car make only
+  //putting it in a map and counting how many honda's there
+  val hondaCount = Map[String, Int]()
+  for (x <- makersInSubmission) {
+    if (x.split(" ", -1).length > 2) {} 
+    else {
+      if (hondaCount.contains(x)) {
+        hondaCount(x) += 1
+      }
+      else{
+          hondaCount(x) = 1
+      }
+    }
+  }
+  hondaCount.foreach(println)
+
+  //show which car make has the most estimate requests - descending order
+  //type in honda and the number of submissions and percentage
+  //put all different methods into separate classes
+  //convert back to csv file
+  //write readme, comments, and scala docs
+
 
   println()
 }
