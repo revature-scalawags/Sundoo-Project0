@@ -27,6 +27,7 @@ version := "1.0"
 
 libraryDependencies += "org.scala-lang.modules" %% "scala-parser-combinators" % "1.1.2"
 libraryDependencies += "org.mongodb.scala" %% "mongo-scala-bson" % "2.9.0"
+libraryDependencies += "au.com.bytecode" % "opencsv" % "2.4"
 
 // Here, `libraryDependencies` is a set of dependencies, and by using `+=`,
 // we're adding the scala-parser-combinators dependency to the set of dependencies

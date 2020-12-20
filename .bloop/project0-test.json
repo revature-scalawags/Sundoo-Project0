@@ -19,6 +19,7 @@
             "C:\\Users\\spark\\AppData\\Local\\Coursier\\cache\\v1\\https\\repo1.maven.org\\maven2\\org\\scala-lang\\scala-library\\2.13.3\\scala-library-2.13.3.jar",
             "C:\\Users\\spark\\AppData\\Local\\Coursier\\cache\\v1\\https\\repo1.maven.org\\maven2\\org\\scala-lang\\modules\\scala-parser-combinators_2.13\\1.1.2\\scala-parser-combinators_2.13-1.1.2.jar",
             "C:\\Users\\spark\\AppData\\Local\\Coursier\\cache\\v1\\https\\repo1.maven.org\\maven2\\org\\mongodb\\scala\\mongo-scala-bson_2.13\\2.9.0\\mongo-scala-bson_2.13-2.9.0.jar",
+            "C:\\Users\\spark\\AppData\\Local\\Coursier\\cache\\v1\\https\\repo1.maven.org\\maven2\\au\\com\\bytecode\\opencsv\\2.4\\opencsv-2.4.jar",
             "C:\\Users\\spark\\AppData\\Local\\Coursier\\cache\\v1\\https\\repo1.maven.org\\maven2\\org\\mongodb\\mongodb-driver-async\\3.12.2\\mongodb-driver-async-3.12.2.jar",
             "C:\\Users\\spark\\AppData\\Local\\Coursier\\cache\\v1\\https\\repo1.maven.org\\maven2\\org\\scala-lang\\scala-reflect\\2.13.3\\scala-reflect-2.13.3.jar",
             "C:\\Users\\spark\\AppData\\Local\\Coursier\\cache\\v1\\https\\repo1.maven.org\\maven2\\org\\mongodb\\bson\\3.12.2\\bson-3.12.2.jar",
@@ -160,6 +161,23 @@
                             "name": "mongo-scala-bson_2.13",
                             "classifier": "sources",
                             "path": "C:\\Users\\spark\\AppData\\Local\\Coursier\\cache\\v1\\https\\repo1.maven.org\\maven2\\org\\mongodb\\scala\\mongo-scala-bson_2.13\\2.9.0\\mongo-scala-bson_2.13-2.9.0-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "au.com.bytecode",
+                    "name": "opencsv",
+                    "version": "2.4",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "opencsv",
+                            "path": "C:\\Users\\spark\\AppData\\Local\\Coursier\\cache\\v1\\https\\repo1.maven.org\\maven2\\au\\com\\bytecode\\opencsv\\2.4\\opencsv-2.4.jar"
+                        },
+                        {
+                            "name": "opencsv",
+                            "classifier": "sources",
+                            "path": "C:\\Users\\spark\\AppData\\Local\\Coursier\\cache\\v1\\https\\repo1.maven.org\\maven2\\au\\com\\bytecode\\opencsv\\2.4\\opencsv-2.4-sources.jar"
                         }
                     ]
                 },
