@@ -9,6 +9,8 @@ import java.io.{BufferedWriter, FileWriter}
 import scala.jdk.CollectionConverters._
 import au.com.bytecode.opencsv.CSVWriter
 import java.util.Scanner
+import scala.sys.process._
+import scala.language.postfixOps
 
 object RequestsByHondaOnwers {
   var lineToArrayBuffer = ArrayBuffer[String]()
@@ -23,32 +25,31 @@ object RequestsByHondaOnwers {
     println()
 
     println("Starting the program...\n")
-    println("Showing a list of files in your folder: ")
-    //show a list of files
+    print("Showing a list of files in your folder -->   ")
 
+    //show a list of files
+    var keyValuePair = Map[Int, String]()
+    var fileListArray = ("ls"!!).split("\\s")
+    fileListArray.foreach(x => print(s"$x "))
+
+  fileListArray = ("ls"!!).split("\\s|\\\\n", -1).map(_.toUpperCase())
+    println()
     println()
 
-    print("Which file you want to import? Please type in a number: ")
-    var numSelected: Int = inputReader()
+    print("Which file you want to import? Please type in the name of the file: ")
+    var fileTyped = inputStringReader()
     println("Importing and opening the file...")
-    var numToString: String = ""
-
-    numSelected match {
-      case 1 => numToString = "ERS.csv"
-      case _ => numToString = ""
-    }
 
     println()
     //wait 5seconds to load
 
     //Fetching the Estimate Request Submission.csv file into my scala program
     //Then, parsing the file into lines
-    if (numToString.isEmpty()) {
-      println("No such file is found.")
-      reqeustsByHondaOwners()
-
-    } else {
-      val file = fromFile(numToString)
+    while(fileTyped.isEmpty() || !fileListArray.contains(fileTyped.toUpperCase())) {
+      println("No such file is found. Please type in the name of the file: ")
+      fileTyped = inputStringReader()
+    } 
+      val file = fromFile(fileTyped)
       for (lines <- file.getLines()) {
         lineToArrayBuffer += lines
       }
@@ -78,7 +79,6 @@ object RequestsByHondaOnwers {
         case 6 => informationBySchema(6)
         case _ => informationBySchema(0)
       }
-    }
 
     def informationBySchema(schema: Int): Unit = {
       if (schema < 1 || schema > 6) {
@@ -131,7 +131,6 @@ object RequestsByHondaOnwers {
         }
         val sortedSchema = schemaSort(orderSelected, contentToMap)
 
-
         //Printing out the Map in a selected order
         //Calculating the number of total requests submitted
         var numOfTotalRequests = 0
@@ -153,21 +152,22 @@ object RequestsByHondaOnwers {
 
         var carMakeTyped = inputStringReader()
         var isLetterCheck: Boolean = true
-        carMakeTyped.foreach(x => 
-          if(!isLetter(x)){
+        carMakeTyped.foreach(x =>
+          if (!isLetter(x)) {
             isLetterCheck = false
           }
         )
 
-        while(!isLetterCheck){
+        while (!isLetterCheck) {
           print("Invalid Input. Please type in a letter format: ")
           carMakeTyped = inputStringReader()
-          carMakeTyped.foreach(x => 
-          if(!isLetter(x)){
-            isLetterCheck = false
-          }else{
-            isLetterCheck = true
-          })
+          carMakeTyped.foreach(x =>
+            if (!isLetter(x)) {
+              isLetterCheck = false
+            } else {
+              isLetterCheck = true
+            }
+          )
         }
         if (carMakeTyped.contains("QUIT")) {
           saveToCSV(
@@ -177,29 +177,26 @@ object RequestsByHondaOnwers {
         } else {
           println(s"$carMakeTyped is selected. Calculating...")
           println()
-
-          if (sortedSchema.contains(carMakeTyped)) {
-            percentageCalculator(
-              (sortedSchema(carMakeTyped)),
-              numOfTotalRequests,
-              carMakeTyped
-            )
-            println("Program completed successfully")
-            saveToCSV(
-              (sortedSchema(carMakeTyped)),
-              numOfTotalRequests,
-              carMakeTyped
-            )
-          } else {
+          while (!sortedSchema.contains(carMakeTyped)) {
             println(s"There is no information about $carMakeTyped.")
             println("Please re-type in the name of a car make: ")
             carMakeTyped = inputStringReader
           }
+          percentageCalculator(
+            (sortedSchema(carMakeTyped)),
+            numOfTotalRequests,
+            carMakeTyped
+          )
+          println("Program completed successfully")
+          saveToCSV(
+            (sortedSchema(carMakeTyped)),
+            numOfTotalRequests,
+            carMakeTyped
+          )
         }
       }
     }
   }
-
   def percentageCalculator(num1: Int, num2: Int, string: String): Double = {
     val percentage = (num1.toFloat / num2.toFloat) * 100
     println(
@@ -216,7 +213,7 @@ object RequestsByHondaOnwers {
   def saveToCSV(list1: ListBuffer[String], list2: ListBuffer[String]): Unit = {
     println(
       "Before you quit, do you want to save this information into .csv file?\n" +
-      "Hit 'Y' to save or 'N' to exit: "
+        "Hit 'Y' to save or 'N' to exit: "
     )
     val response = inputStringReader()
 
@@ -229,20 +226,20 @@ object RequestsByHondaOnwers {
         )
       )
 
-
       val csvWriter = new CSVWriter(outputFile)
       val fileSchema = List("Car Make", "Estimate Requests by the Make")
       val combinedLists = list1.zip(list2)
 
-      val rows = combinedLists.foldLeft(List[List[String]]()) {
-        case (acc, (a,b)) => List(a, b) +: acc
-      }.reverse
+      val rows = combinedLists
+        .foldLeft(List[List[String]]()) { case (acc, (a, b)) =>
+          List(a, b) +: acc
+        }
+        .reverse
 
       csvWriter.writeAll((fileSchema +: rows).map(_.toArray).asJava)
       outputFile.close()
     }
   }
-
 
   def saveToCSV(num1: Int, num2: Int, string: String): Unit = {
     println(
@@ -282,7 +279,7 @@ object RequestsByHondaOnwers {
   def inputStringReader(): String = {
     var scanner = new Scanner(System.in)
     var inputTyped = ""
-        inputTyped = scanner.nextLine().toUpperCase()
+    inputTyped = scanner.nextLine().toUpperCase()
     return inputTyped
   }
 

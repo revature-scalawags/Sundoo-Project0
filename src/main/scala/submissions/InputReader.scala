@@ -1,3 +1,0 @@
-package submissions
-
-class InputReader
