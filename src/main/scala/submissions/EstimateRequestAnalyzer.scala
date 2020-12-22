@@ -12,7 +12,7 @@ import java.util.Scanner
 import scala.sys.process._
 import scala.language.postfixOps
 
-object RequestsByHondaOnwers {
+object EstimateRequestAnalyzer {
   var lineToArrayBuffer = ArrayBuffer[String]()
 
   def main(args: Array[String]): Unit = {
@@ -25,7 +25,7 @@ object RequestsByHondaOnwers {
     println()
 
     println("Starting the program...\n")
-    print("Showing a list of files in your folder -->   ")
+    print("Showing the list of files in your folder -->   ")
 
     //show a list of files
     var keyValuePair = Map[Int, String]()
