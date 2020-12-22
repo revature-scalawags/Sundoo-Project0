@@ -11,76 +11,92 @@ import au.com.bytecode.opencsv.CSVWriter
 import java.util.Scanner
 import scala.sys.process._
 import scala.language.postfixOps
+import com.typesafe.scalalogging.LazyLogging
 
-object EstimateRequestAnalyzer {
-  var lineToArrayBuffer = ArrayBuffer[String]()
+object EstimateRequestAnalyzer extends LazyLogging {
+
+  logger.warn("Starting the Application")
+  logger.error("Starting the Application")
 
   def main(args: Array[String]): Unit = {
+    logger.warn("Executing the Main method")
+    logger.error("Executing the Main method")
 
-    reqeustsByHondaOwners()
-
+    //Check Args and run, could possibly add menu option here
+    if(args.length >= 0){
+      estimateRequestAnalyzer()
+    }
   }
 
-  def reqeustsByHondaOwners(): Unit = {
-    println()
+  def estimateRequestAnalyzer(): Unit = {
+    logger.warn("Calling the estimateRequestAnalyzer method")
+    logger.error("Calling the estimateRequestAnalyzer method")
+    println("\n\n")
 
     println("Starting the program...\n")
     print("Showing the list of files in your folder -->   ")
 
-    //show a list of files
+    //Showing the list of files in the folder
     var keyValuePair = Map[Int, String]()
-    var fileListArray = ("ls"!!).split("\\s")
-    fileListArray.foreach(x => print(s"$x "))
+    var fileListArray = ("ls" !!).split("\\s")
+    fileListArray.foreach(x => print(s"| $x "))
 
-  fileListArray = ("ls"!!).split("\\s|\\\\n", -1).map(_.toUpperCase())
+    fileListArray = ("ls" !!).split("\\s|\\\\n", -1).map(_.toUpperCase())
     println()
     println()
 
-    print("Which file you want to import? Please type in the name of the file: ")
+    print(
+      "Which file you want to import? Please type in the name of the file: "
+    )
     var fileTyped = inputStringReader()
     println("Importing and opening the file...")
 
     println()
     //wait 5seconds to load
 
-    //Fetching the Estimate Request Submission.csv file into my scala program
-    //Then, parsing the file into lines
-    while(fileTyped.isEmpty() || !fileListArray.contains(fileTyped.toUpperCase())) {
+    //Fetching the selected file into my scala application
+    while (
+      //Catching any exception or errors
+      fileTyped.isEmpty() || !fileListArray.contains(fileTyped.toUpperCase())
+    ) {
       println("No such file is found. Please type in the name of the file: ")
       fileTyped = inputStringReader()
-    } 
-      val file = fromFile(fileTyped)
-      for (lines <- file.getLines()) {
-        lineToArrayBuffer += lines
-      }
+    }
+    val file = fromFile(fileTyped)
+    var lineToArrayBuffer = ArrayBuffer[String]()
+    //Parsing the file into lines
+    for (lines <- file.getLines()) {
+      lineToArrayBuffer += lines
+    }
 
-      println("ERS.csv imported successfully")
-      println()
+    println(s"${fileTyped.toUpperCase} imported successfully")
+    println()
 
-      println("Below are the shcemas/headings of the file: ")
-      val firstLine = lineToArrayBuffer.apply(0).toUpperCase().split(",")
+    println("Below are the shcemas/headings of the file: ")
+    val firstLine = lineToArrayBuffer.apply(0).toUpperCase().split(",")
 
-      //Printing out optings to choose from
-      for (i <- 0 to firstLine.length - 1) {
-        println(s"${i + 1}. ${firstLine(i)}")
-      }
+    //Printing out optings to choose from
+    for (i <- 0 to firstLine.length - 1) {
+      println(s"${i + 1}. ${firstLine(i)}")
+    }
 
-      //Accessing information by the number selected
-      print("Type in a number for information you want to access: ")
-      var schemaSelected: Int = inputReader()
+    //Accessing information by the number selected
+    print("Type in a number for information you want to access: ")
+    var schemaSelected: Int = inputReader()
 
-      println()
-      schemaSelected match {
-        case 1 => informationBySchema(1)
-        case 2 => informationBySchema(2)
-        case 3 => informationBySchema(3)
-        case 4 => informationBySchema(4)
-        case 5 => informationBySchema(5)
-        case 6 => informationBySchema(6)
-        case _ => informationBySchema(0)
-      }
+    println()
+    schemaSelected match {
+      case 1 => informationBySchema(1)
+      case 2 => informationBySchema(2)
+      case 3 => informationBySchema(3)
+      case 4 => informationBySchema(4)
+      case 5 => informationBySchema(5)
+      case 6 => informationBySchema(6)
+      case _ => informationBySchema(0)
+    }
 
     def informationBySchema(schema: Int): Unit = {
+      //Catching any exception or errors
       if (schema < 1 || schema > 6) {
         print("No such schema is found. Type in a number again: ")
         informationBySchema(inputReader())
@@ -88,11 +104,11 @@ object EstimateRequestAnalyzer {
         println("Fetching the information you requested...")
         println()
 
-        //Storing information fetched from the selected column into an ArrayBuffer
+        //Storing the information fetched from the selected column into an ArrayBuffer
         var columnSelectedToArray = ArrayBuffer[String]()
         for (i <- lineToArrayBuffer) {
           val outOfBoundExceptionCheck = i.split(",", -1).length
-          if (outOfBoundExceptionCheck > 1) {
+          if (outOfBoundExceptionCheck > 1) { //Making sure each line contains at least two columns - Name of the info & # of requests submitted
             val column = i.split(",", -1)(schema - 1).toUpperCase()
             if (!column.isEmpty()) {
               columnSelectedToArray += column
@@ -100,8 +116,8 @@ object EstimateRequestAnalyzer {
           }
         }
 
-        //Content Check if the output is really car make only
-        //putting it in a map and counting how many each car make's there
+        //Content Check to make sure the stored info matches with info users want
+        //putting it in a map and counting the # of requests submitted
         val contentToMap = Map[String, Int]()
         for (x <- columnSelectedToArray) {
           val contentFilter = x.split("-|\\s", -1).mkString(" ")
@@ -123,7 +139,7 @@ object EstimateRequestAnalyzer {
             "Type in a number: "
         )
 
-        //Sorting the Map in different options
+        //Sorting the Map to display it in three different ordering options
         var orderSelected = inputReader()
         while (orderSelected < 0 || orderSelected > 3) {
           print("Invalid Input. Please re-type in a number: ")
@@ -133,12 +149,11 @@ object EstimateRequestAnalyzer {
 
         //Printing out the Map in a selected order
         //Calculating the number of total requests submitted
-        var numOfTotalRequests = 0
+        var numOfTotalRequests = contentToMap.foldLeft(0)(_ + _._2)
         var carMakesList = ListBuffer[String]()
         var requestsList = ListBuffer[String]()
         sortedSchema.keys.foreach { x =>
           println(f"${x}%-13s - ${sortedSchema(x)}%2d")
-          numOfTotalRequests += sortedSchema(x)
           carMakesList += x
           requestsList += sortedSchema(x).toString()
         }
@@ -146,30 +161,32 @@ object EstimateRequestAnalyzer {
         println(
           "If you want to know the percentage of a specific car make's reqeusts out of the total requests, \n" +
             "type in the name of a car make: \n" +
-            "(Type 'Quit' to end the program here.)"
+            "(Type 'Quit' to quit the application here.)"
         )
-        def isLetter(c: Char) = c.isLetter && c <= 'z'
 
+        //Making sure that the user input is String value only
+        def isLetter(c: Char) = c.isLetter && c <= 'z'
         var carMakeTyped = inputStringReader()
         var isLetterCheck: Boolean = true
         carMakeTyped.foreach(x =>
-          if (!isLetter(x)) {
+          if (!isLetter(x) || x.toString.isEmpty) {
             isLetterCheck = false
           }
         )
 
+        //Catching any exception or errors
         while (!isLetterCheck) {
           print("Invalid Input. Please type in a letter format: ")
           carMakeTyped = inputStringReader()
           carMakeTyped.foreach(x =>
-            if (!isLetter(x)) {
+            if (!isLetter(x) | x.toString.isEmpty) {
               isLetterCheck = false
             } else {
               isLetterCheck = true
             }
           )
         }
-        if (carMakeTyped.contains("QUIT")) {
+        if (carMakeTyped.toUpperCase().contains("QUIT")) {
           saveToCSV(
             carMakesList,
             requestsList
@@ -179,15 +196,17 @@ object EstimateRequestAnalyzer {
           println()
           while (!sortedSchema.contains(carMakeTyped)) {
             println(s"There is no information about $carMakeTyped.")
-            println("Please re-type in the name of a car make: ")
+            print("Please re-type in the name of a car make: ")
             carMakeTyped = inputStringReader
+            println()
           }
           percentageCalculator(
             (sortedSchema(carMakeTyped)),
             numOfTotalRequests,
             carMakeTyped
           )
-          println("Program completed successfully")
+          println()
+          println("Program completed successfully\n")
           saveToCSV(
             (sortedSchema(carMakeTyped)),
             numOfTotalRequests,
@@ -198,6 +217,7 @@ object EstimateRequestAnalyzer {
     }
   }
   def percentageCalculator(num1: Int, num2: Int, string: String): Double = {
+
     val percentage = (num1.toFloat / num2.toFloat) * 100
     println(
       "|    Car Make    " + "|  Estimate Reqeusts submitted  " + "|  Percentage calculated  |\n" +
@@ -211,18 +231,18 @@ object EstimateRequestAnalyzer {
   }
 
   def saveToCSV(list1: ListBuffer[String], list2: ListBuffer[String]): Unit = {
+
     println(
       "Before you quit, do you want to save this information into .csv file?\n" +
         "Hit 'Y' to save or 'N' to exit: "
     )
-    val response = inputStringReader()
-
+    var response = inputStringReader()
     if (response.contains("Y")) {
 
       println("Saving it into .csv file...")
       val outputFile = new BufferedWriter(
         new FileWriter(
-          "C:/Users/spark/Project00/project0/src/main/scala/output.csv"
+          "./output.csv"
         )
       )
 
@@ -242,18 +262,23 @@ object EstimateRequestAnalyzer {
   }
 
   def saveToCSV(num1: Int, num2: Int, string: String): Unit = {
+
     println(
       "Before you quit, do you want to save this information into .csv file?\n" +
         "Hit 'Y' to save or 'N' to exit: "
     )
-    val response = inputStringReader()
-
+    var response = inputStringReader()
+    while (response.isEmpty) {
+      print("No value entered. Please re-type in your command: ")
+      response = inputStringReader()
+      println()
+    }
     if (response.contains("Y")) {
       var percentage = (num1.toFloat / num2.toFloat) * 100
       println("Saving it into .csv file...")
       val outputFile = new BufferedWriter(
         new FileWriter(
-          "C:/Users/spark/Project00/project0/src/main/scala/output.csv"
+          "./output.csv"
         )
       )
       val csvWriter = new CSVWriter(outputFile)
@@ -277,6 +302,7 @@ object EstimateRequestAnalyzer {
   }
 
   def inputStringReader(): String = {
+
     var scanner = new Scanner(System.in)
     var inputTyped = ""
     inputTyped = scanner.nextLine().toUpperCase()
@@ -307,6 +333,7 @@ object EstimateRequestAnalyzer {
       orderSelected: Int,
       contentToMap: Map[String, Int]
   ): ListMap[String, Int] = {
+
     val sortedMap: ListMap[String, Int] = orderSelected match {
       case 1 => ListMap(contentToMap.toSeq.sortWith(_._1 < _._1): _*)
       case 2 => ListMap(contentToMap.toSeq.sortWith(_._2 < _._2): _*)

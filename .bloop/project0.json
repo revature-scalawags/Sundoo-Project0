@@ -19,8 +19,12 @@
             "C:\\Users\\spark\\AppData\\Local\\Coursier\\cache\\v1\\https\\repo1.maven.org\\maven2\\org\\scala-lang\\modules\\scala-parser-combinators_2.13\\1.1.2\\scala-parser-combinators_2.13-1.1.2.jar",
             "C:\\Users\\spark\\AppData\\Local\\Coursier\\cache\\v1\\https\\repo1.maven.org\\maven2\\org\\mongodb\\scala\\mongo-scala-bson_2.13\\2.9.0\\mongo-scala-bson_2.13-2.9.0.jar",
             "C:\\Users\\spark\\AppData\\Local\\Coursier\\cache\\v1\\https\\repo1.maven.org\\maven2\\au\\com\\bytecode\\opencsv\\2.4\\opencsv-2.4.jar",
+            "C:\\Users\\spark\\AppData\\Local\\Coursier\\cache\\v1\\https\\repo1.maven.org\\maven2\\com\\typesafe\\scala-logging\\scala-logging_2.13\\3.9.2\\scala-logging_2.13-3.9.2.jar",
+            "C:\\Users\\spark\\AppData\\Local\\Coursier\\cache\\v1\\https\\repo1.maven.org\\maven2\\ch\\qos\\logback\\logback-classic\\1.2.3\\logback-classic-1.2.3.jar",
             "C:\\Users\\spark\\AppData\\Local\\Coursier\\cache\\v1\\https\\repo1.maven.org\\maven2\\org\\mongodb\\mongodb-driver-async\\3.12.2\\mongodb-driver-async-3.12.2.jar",
             "C:\\Users\\spark\\AppData\\Local\\Coursier\\cache\\v1\\https\\repo1.maven.org\\maven2\\org\\scala-lang\\scala-reflect\\2.13.3\\scala-reflect-2.13.3.jar",
+            "C:\\Users\\spark\\AppData\\Local\\Coursier\\cache\\v1\\https\\repo1.maven.org\\maven2\\org\\slf4j\\slf4j-api\\1.7.26\\slf4j-api-1.7.26.jar",
+            "C:\\Users\\spark\\AppData\\Local\\Coursier\\cache\\v1\\https\\repo1.maven.org\\maven2\\ch\\qos\\logback\\logback-core\\1.2.3\\logback-core-1.2.3.jar",
             "C:\\Users\\spark\\AppData\\Local\\Coursier\\cache\\v1\\https\\repo1.maven.org\\maven2\\org\\mongodb\\bson\\3.12.2\\bson-3.12.2.jar",
             "C:\\Users\\spark\\AppData\\Local\\Coursier\\cache\\v1\\https\\repo1.maven.org\\maven2\\org\\mongodb\\mongodb-driver-core\\3.12.2\\mongodb-driver-core-3.12.2.jar"
         ],
@@ -181,6 +185,40 @@
                     ]
                 },
                 {
+                    "organization": "com.typesafe.scala-logging",
+                    "name": "scala-logging_2.13",
+                    "version": "3.9.2",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "scala-logging_2.13",
+                            "path": "C:\\Users\\spark\\AppData\\Local\\Coursier\\cache\\v1\\https\\repo1.maven.org\\maven2\\com\\typesafe\\scala-logging\\scala-logging_2.13\\3.9.2\\scala-logging_2.13-3.9.2.jar"
+                        },
+                        {
+                            "name": "scala-logging_2.13",
+                            "classifier": "sources",
+                            "path": "C:\\Users\\spark\\AppData\\Local\\Coursier\\cache\\v1\\https\\repo1.maven.org\\maven2\\com\\typesafe\\scala-logging\\scala-logging_2.13\\3.9.2\\scala-logging_2.13-3.9.2-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "ch.qos.logback",
+                    "name": "logback-classic",
+                    "version": "1.2.3",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "logback-classic",
+                            "path": "C:\\Users\\spark\\AppData\\Local\\Coursier\\cache\\v1\\https\\repo1.maven.org\\maven2\\ch\\qos\\logback\\logback-classic\\1.2.3\\logback-classic-1.2.3.jar"
+                        },
+                        {
+                            "name": "logback-classic",
+                            "classifier": "sources",
+                            "path": "C:\\Users\\spark\\AppData\\Local\\Coursier\\cache\\v1\\https\\repo1.maven.org\\maven2\\ch\\qos\\logback\\logback-classic\\1.2.3\\logback-classic-1.2.3-sources.jar"
+                        }
+                    ]
+                },
+                {
                     "organization": "org.mongodb",
                     "name": "mongodb-driver-async",
                     "version": "3.12.2",
@@ -211,6 +249,40 @@
                             "name": "scala-reflect",
                             "classifier": "sources",
                             "path": "C:\\Users\\spark\\AppData\\Local\\Coursier\\cache\\v1\\https\\repo1.maven.org\\maven2\\org\\scala-lang\\scala-reflect\\2.13.3\\scala-reflect-2.13.3-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "org.slf4j",
+                    "name": "slf4j-api",
+                    "version": "1.7.26",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "slf4j-api",
+                            "path": "C:\\Users\\spark\\AppData\\Local\\Coursier\\cache\\v1\\https\\repo1.maven.org\\maven2\\org\\slf4j\\slf4j-api\\1.7.26\\slf4j-api-1.7.26.jar"
+                        },
+                        {
+                            "name": "slf4j-api",
+                            "classifier": "sources",
+                            "path": "C:\\Users\\spark\\AppData\\Local\\Coursier\\cache\\v1\\https\\repo1.maven.org\\maven2\\org\\slf4j\\slf4j-api\\1.7.26\\slf4j-api-1.7.26-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "ch.qos.logback",
+                    "name": "logback-core",
+                    "version": "1.2.3",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "logback-core",
+                            "path": "C:\\Users\\spark\\AppData\\Local\\Coursier\\cache\\v1\\https\\repo1.maven.org\\maven2\\ch\\qos\\logback\\logback-core\\1.2.3\\logback-core-1.2.3.jar"
+                        },
+                        {
+                            "name": "logback-core",
+                            "classifier": "sources",
+                            "path": "C:\\Users\\spark\\AppData\\Local\\Coursier\\cache\\v1\\https\\repo1.maven.org\\maven2\\ch\\qos\\logback\\logback-core\\1.2.3\\logback-core-1.2.3-sources.jar"
                         }
                     ]
                 },

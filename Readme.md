@@ -8,8 +8,13 @@ A simple application to grab data from the **Eestimate Requests Submission(ERS).
 - JDK Version 8 or 11
 - Scala and SBT
 - OpenCSV API 2.4 (***libraryDependencies += "au.com.bytecode" % "opencsv" % "2.4"***)
+- Scala Logging Library 
+  - (***libraryDependencies += "com.typesafe.scala-logging" %% "scala-logging" % "3.9.2"***)
+  - (***libraryDependencies += "ch.qos.logback" % "logback-classic" % "1.2.3"***)
 
 ## Usage
+- Users can get the information of how many requests are submitted by month, by car make, by car model, and by a type of a vehicle
+- Users can get the percentage of a specific car make's submissions out of the total submissions
 
 ## Commands
 - Please use the following commands in order to properly compile, test, and run the application.
