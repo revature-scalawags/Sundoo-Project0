@@ -46,7 +46,6 @@ final abstract class Int private extends AnyVal {
   /** Returns the negation of this value. */
   def unary_- : Int
 
-  @deprecated("Adding a number and a String is deprecated. Use the string interpolation `s\"$num$str\"`", "2.13.0")
   def +(x: String): String
 
   /**
@@ -478,9 +477,8 @@ object Int extends AnyValCompanion {
   override def toString = "object scala.Int"
   /** Language mandated coercions from Int to "wider" types. */
   import scala.language.implicitConversions
-  @deprecated("Implicit conversion from Int to Float is dangerous because it loses precision. Write `.toFloat` instead.", "2.13.1")
-  implicit def int2float(x: Int): Float = x.toFloat
   implicit def int2long(x: Int): Long = x.toLong
+  implicit def int2float(x: Int): Float = x.toFloat
   implicit def int2double(x: Int): Double = x.toDouble
 }
 

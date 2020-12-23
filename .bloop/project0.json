@@ -17,16 +17,18 @@
         "classpath": [
             "C:\\Users\\spark\\AppData\\Local\\Coursier\\cache\\v1\\https\\repo1.maven.org\\maven2\\org\\scala-lang\\scala-library\\2.13.3\\scala-library-2.13.3.jar",
             "C:\\Users\\spark\\AppData\\Local\\Coursier\\cache\\v1\\https\\repo1.maven.org\\maven2\\org\\scala-lang\\modules\\scala-parser-combinators_2.13\\1.1.2\\scala-parser-combinators_2.13-1.1.2.jar",
-            "C:\\Users\\spark\\AppData\\Local\\Coursier\\cache\\v1\\https\\repo1.maven.org\\maven2\\org\\mongodb\\scala\\mongo-scala-bson_2.13\\2.9.0\\mongo-scala-bson_2.13-2.9.0.jar",
+            "C:\\Users\\spark\\AppData\\Local\\Coursier\\cache\\v1\\https\\repo1.maven.org\\maven2\\org\\mongodb\\scala\\mongo-scala-driver_2.13\\4.1.1\\mongo-scala-driver_2.13-4.1.1.jar",
             "C:\\Users\\spark\\AppData\\Local\\Coursier\\cache\\v1\\https\\repo1.maven.org\\maven2\\au\\com\\bytecode\\opencsv\\2.4\\opencsv-2.4.jar",
             "C:\\Users\\spark\\AppData\\Local\\Coursier\\cache\\v1\\https\\repo1.maven.org\\maven2\\com\\typesafe\\scala-logging\\scala-logging_2.13\\3.9.2\\scala-logging_2.13-3.9.2.jar",
             "C:\\Users\\spark\\AppData\\Local\\Coursier\\cache\\v1\\https\\repo1.maven.org\\maven2\\ch\\qos\\logback\\logback-classic\\1.2.3\\logback-classic-1.2.3.jar",
-            "C:\\Users\\spark\\AppData\\Local\\Coursier\\cache\\v1\\https\\repo1.maven.org\\maven2\\org\\mongodb\\mongodb-driver-async\\3.12.2\\mongodb-driver-async-3.12.2.jar",
             "C:\\Users\\spark\\AppData\\Local\\Coursier\\cache\\v1\\https\\repo1.maven.org\\maven2\\org\\scala-lang\\scala-reflect\\2.13.3\\scala-reflect-2.13.3.jar",
+            "C:\\Users\\spark\\AppData\\Local\\Coursier\\cache\\v1\\https\\repo1.maven.org\\maven2\\org\\mongodb\\scala\\mongo-scala-bson_2.13\\4.1.1\\mongo-scala-bson_2.13-4.1.1.jar",
+            "C:\\Users\\spark\\AppData\\Local\\Coursier\\cache\\v1\\https\\repo1.maven.org\\maven2\\org\\mongodb\\mongodb-driver-reactivestreams\\4.1.1\\mongodb-driver-reactivestreams-4.1.1.jar",
             "C:\\Users\\spark\\AppData\\Local\\Coursier\\cache\\v1\\https\\repo1.maven.org\\maven2\\org\\slf4j\\slf4j-api\\1.7.26\\slf4j-api-1.7.26.jar",
             "C:\\Users\\spark\\AppData\\Local\\Coursier\\cache\\v1\\https\\repo1.maven.org\\maven2\\ch\\qos\\logback\\logback-core\\1.2.3\\logback-core-1.2.3.jar",
-            "C:\\Users\\spark\\AppData\\Local\\Coursier\\cache\\v1\\https\\repo1.maven.org\\maven2\\org\\mongodb\\bson\\3.12.2\\bson-3.12.2.jar",
-            "C:\\Users\\spark\\AppData\\Local\\Coursier\\cache\\v1\\https\\repo1.maven.org\\maven2\\org\\mongodb\\mongodb-driver-core\\3.12.2\\mongodb-driver-core-3.12.2.jar"
+            "C:\\Users\\spark\\AppData\\Local\\Coursier\\cache\\v1\\https\\repo1.maven.org\\maven2\\org\\mongodb\\bson\\4.1.1\\bson-4.1.1.jar",
+            "C:\\Users\\spark\\AppData\\Local\\Coursier\\cache\\v1\\https\\repo1.maven.org\\maven2\\org\\mongodb\\mongodb-driver-core\\4.1.1\\mongodb-driver-core-4.1.1.jar",
+            "C:\\Users\\spark\\AppData\\Local\\Coursier\\cache\\v1\\https\\repo1.maven.org\\maven2\\org\\reactivestreams\\reactive-streams\\1.0.2\\reactive-streams-1.0.2.jar"
         ],
         "out": "C:\\Users\\spark\\Project00\\project0\\.bloop\\project0",
         "classesDir": "C:\\Users\\spark\\Project00\\project0\\.bloop\\project0\\scala-2.13\\classes",
@@ -152,18 +154,18 @@
                 },
                 {
                     "organization": "org.mongodb.scala",
-                    "name": "mongo-scala-bson_2.13",
-                    "version": "2.9.0",
+                    "name": "mongo-scala-driver_2.13",
+                    "version": "4.1.1",
                     "configurations": "default",
                     "artifacts": [
                         {
-                            "name": "mongo-scala-bson_2.13",
-                            "path": "C:\\Users\\spark\\AppData\\Local\\Coursier\\cache\\v1\\https\\repo1.maven.org\\maven2\\org\\mongodb\\scala\\mongo-scala-bson_2.13\\2.9.0\\mongo-scala-bson_2.13-2.9.0.jar"
+                            "name": "mongo-scala-driver_2.13",
+                            "path": "C:\\Users\\spark\\AppData\\Local\\Coursier\\cache\\v1\\https\\repo1.maven.org\\maven2\\org\\mongodb\\scala\\mongo-scala-driver_2.13\\4.1.1\\mongo-scala-driver_2.13-4.1.1.jar"
                         },
                         {
-                            "name": "mongo-scala-bson_2.13",
+                            "name": "mongo-scala-driver_2.13",
                             "classifier": "sources",
-                            "path": "C:\\Users\\spark\\AppData\\Local\\Coursier\\cache\\v1\\https\\repo1.maven.org\\maven2\\org\\mongodb\\scala\\mongo-scala-bson_2.13\\2.9.0\\mongo-scala-bson_2.13-2.9.0-sources.jar"
+                            "path": "C:\\Users\\spark\\AppData\\Local\\Coursier\\cache\\v1\\https\\repo1.maven.org\\maven2\\org\\mongodb\\scala\\mongo-scala-driver_2.13\\4.1.1\\mongo-scala-driver_2.13-4.1.1-sources.jar"
                         }
                     ]
                 },
@@ -219,23 +221,6 @@
                     ]
                 },
                 {
-                    "organization": "org.mongodb",
-                    "name": "mongodb-driver-async",
-                    "version": "3.12.2",
-                    "configurations": "default",
-                    "artifacts": [
-                        {
-                            "name": "mongodb-driver-async",
-                            "path": "C:\\Users\\spark\\AppData\\Local\\Coursier\\cache\\v1\\https\\repo1.maven.org\\maven2\\org\\mongodb\\mongodb-driver-async\\3.12.2\\mongodb-driver-async-3.12.2.jar"
-                        },
-                        {
-                            "name": "mongodb-driver-async",
-                            "classifier": "sources",
-                            "path": "C:\\Users\\spark\\AppData\\Local\\Coursier\\cache\\v1\\https\\repo1.maven.org\\maven2\\org\\mongodb\\mongodb-driver-async\\3.12.2\\mongodb-driver-async-3.12.2-sources.jar"
-                        }
-                    ]
-                },
-                {
                     "organization": "org.scala-lang",
                     "name": "scala-reflect",
                     "version": "2.13.3",
@@ -249,6 +234,40 @@
                             "name": "scala-reflect",
                             "classifier": "sources",
                             "path": "C:\\Users\\spark\\AppData\\Local\\Coursier\\cache\\v1\\https\\repo1.maven.org\\maven2\\org\\scala-lang\\scala-reflect\\2.13.3\\scala-reflect-2.13.3-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "org.mongodb.scala",
+                    "name": "mongo-scala-bson_2.13",
+                    "version": "4.1.1",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "mongo-scala-bson_2.13",
+                            "path": "C:\\Users\\spark\\AppData\\Local\\Coursier\\cache\\v1\\https\\repo1.maven.org\\maven2\\org\\mongodb\\scala\\mongo-scala-bson_2.13\\4.1.1\\mongo-scala-bson_2.13-4.1.1.jar"
+                        },
+                        {
+                            "name": "mongo-scala-bson_2.13",
+                            "classifier": "sources",
+                            "path": "C:\\Users\\spark\\AppData\\Local\\Coursier\\cache\\v1\\https\\repo1.maven.org\\maven2\\org\\mongodb\\scala\\mongo-scala-bson_2.13\\4.1.1\\mongo-scala-bson_2.13-4.1.1-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "org.mongodb",
+                    "name": "mongodb-driver-reactivestreams",
+                    "version": "4.1.1",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "mongodb-driver-reactivestreams",
+                            "path": "C:\\Users\\spark\\AppData\\Local\\Coursier\\cache\\v1\\https\\repo1.maven.org\\maven2\\org\\mongodb\\mongodb-driver-reactivestreams\\4.1.1\\mongodb-driver-reactivestreams-4.1.1.jar"
+                        },
+                        {
+                            "name": "mongodb-driver-reactivestreams",
+                            "classifier": "sources",
+                            "path": "C:\\Users\\spark\\AppData\\Local\\Coursier\\cache\\v1\\https\\repo1.maven.org\\maven2\\org\\mongodb\\mongodb-driver-reactivestreams\\4.1.1\\mongodb-driver-reactivestreams-4.1.1-sources.jar"
                         }
                     ]
                 },
@@ -289,34 +308,51 @@
                 {
                     "organization": "org.mongodb",
                     "name": "bson",
-                    "version": "3.12.2",
+                    "version": "4.1.1",
                     "configurations": "default",
                     "artifacts": [
                         {
                             "name": "bson",
-                            "path": "C:\\Users\\spark\\AppData\\Local\\Coursier\\cache\\v1\\https\\repo1.maven.org\\maven2\\org\\mongodb\\bson\\3.12.2\\bson-3.12.2.jar"
+                            "path": "C:\\Users\\spark\\AppData\\Local\\Coursier\\cache\\v1\\https\\repo1.maven.org\\maven2\\org\\mongodb\\bson\\4.1.1\\bson-4.1.1.jar"
                         },
                         {
                             "name": "bson",
                             "classifier": "sources",
-                            "path": "C:\\Users\\spark\\AppData\\Local\\Coursier\\cache\\v1\\https\\repo1.maven.org\\maven2\\org\\mongodb\\bson\\3.12.2\\bson-3.12.2-sources.jar"
+                            "path": "C:\\Users\\spark\\AppData\\Local\\Coursier\\cache\\v1\\https\\repo1.maven.org\\maven2\\org\\mongodb\\bson\\4.1.1\\bson-4.1.1-sources.jar"
                         }
                     ]
                 },
                 {
                     "organization": "org.mongodb",
                     "name": "mongodb-driver-core",
-                    "version": "3.12.2",
+                    "version": "4.1.1",
                     "configurations": "default",
                     "artifacts": [
                         {
                             "name": "mongodb-driver-core",
-                            "path": "C:\\Users\\spark\\AppData\\Local\\Coursier\\cache\\v1\\https\\repo1.maven.org\\maven2\\org\\mongodb\\mongodb-driver-core\\3.12.2\\mongodb-driver-core-3.12.2.jar"
+                            "path": "C:\\Users\\spark\\AppData\\Local\\Coursier\\cache\\v1\\https\\repo1.maven.org\\maven2\\org\\mongodb\\mongodb-driver-core\\4.1.1\\mongodb-driver-core-4.1.1.jar"
                         },
                         {
                             "name": "mongodb-driver-core",
                             "classifier": "sources",
-                            "path": "C:\\Users\\spark\\AppData\\Local\\Coursier\\cache\\v1\\https\\repo1.maven.org\\maven2\\org\\mongodb\\mongodb-driver-core\\3.12.2\\mongodb-driver-core-3.12.2-sources.jar"
+                            "path": "C:\\Users\\spark\\AppData\\Local\\Coursier\\cache\\v1\\https\\repo1.maven.org\\maven2\\org\\mongodb\\mongodb-driver-core\\4.1.1\\mongodb-driver-core-4.1.1-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "org.reactivestreams",
+                    "name": "reactive-streams",
+                    "version": "1.0.2",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "reactive-streams",
+                            "path": "C:\\Users\\spark\\AppData\\Local\\Coursier\\cache\\v1\\https\\repo1.maven.org\\maven2\\org\\reactivestreams\\reactive-streams\\1.0.2\\reactive-streams-1.0.2.jar"
+                        },
+                        {
+                            "name": "reactive-streams",
+                            "classifier": "sources",
+                            "path": "C:\\Users\\spark\\AppData\\Local\\Coursier\\cache\\v1\\https\\repo1.maven.org\\maven2\\org\\reactivestreams\\reactive-streams\\1.0.2\\reactive-streams-1.0.2-sources.jar"
                         }
                     ]
                 },

@@ -10,6 +10,14 @@ import java.util.Scanner
 import scala.sys.process._
 import scala.language.postfixOps
 import com.typesafe.scalalogging.LazyLogging
+import tour.Helpers._
+import org.mongodb.scala._
+
+/**
+  * Reads ERS(Estimate Request Submissions).csv file,
+  * and to analyze the data at user's disposal. 
+  * Users have an option to save the analyzed data into .csv file.
+  */
 
 object EstimateRequestAnalyzer extends LazyLogging {
 
@@ -185,14 +193,20 @@ object EstimateRequestAnalyzer extends LazyLogging {
             }
           )
         }
+        //When "Quit" is entered, ask users if they save this file in .csv format
         if (carMakeTyped.toUpperCase().contains("QUIT")) {
           saveToCSV(
             carMakesList,
             requestsList
           )
-        } else {
+        } 
+
+        //Calculate the percentage of a specific mark make's requests out of total requests
+        else {
           println(s"$carMakeTyped is selected. Calculating...")
           println()
+
+          //Catching any exception or errors
           while (!sortedSchema.contains(carMakeTyped)) {
             println(s"There is no information about $carMakeTyped.")
             print("Please re-type in the name of a car make: ")
@@ -206,6 +220,8 @@ object EstimateRequestAnalyzer extends LazyLogging {
           )
           println()
           println("Program completed successfully\n")
+
+          //Ask users if they save this file in .csv format
           saveToCSV(
             (sortedSchema(carMakeTyped)),
             numOfTotalRequests,
@@ -264,8 +280,8 @@ object EstimateRequestAnalyzer extends LazyLogging {
     return true
   }
 
+  //Saving the information of a selected car make's requests and a percentage calculated into .csv file
   def saveToCSV(num1: Int, num2: Int, string: String): Boolean = {
-
     println(
       "Before you quit, do you want to save this information into .csv file?\n" +
         "Hit 'Y' to save or 'N' to exit: "
@@ -301,10 +317,25 @@ object EstimateRequestAnalyzer extends LazyLogging {
       var listOfValues = List(fileSchema, values)
       csvWriter.writeAll(listOfValues.asJava)
       outputFile.close()
-    }
+      println()
+      println("Saved successfully. Do you also want to save it to MongoDB?\n" +
+        "Hit 'Y' to save or 'N' to exit: ")
+    
+        var response1 = inputStringReader()
+        while (response1.isEmpty) {
+          print("No value entered. Please re-type in your command: ")
+          response1 = inputStringReader()
+          println()
+          }
+          if (response1.contains("Y")) {
+            val data = SaveToMongoDB.getPercentage(string, num1.toString, num2.toString, percentage.toString)
+            SaveToMongoDB.insertPercentage(data)
+          }
+        }     
     return true
   }
 
+  //Prompting a user, reading the user's String input only, and returning it in a String format
   def inputStringReader(): String = {
 
     var scanner = new Scanner(System.in)
@@ -313,6 +344,7 @@ object EstimateRequestAnalyzer extends LazyLogging {
     return inputTyped
   }
 
+  //prompting a user, reading the user's Integer input only, and returning it in an Integer format
   def inputReader(): Int = {
     var scanner = new Scanner(System.in)
     var numSelected = 0
@@ -333,6 +365,7 @@ object EstimateRequestAnalyzer extends LazyLogging {
     return numSelected
   }
 
+  //Sorting a map in three ordering options and returning a sorted ListMap
   def schemaSort(
       orderSelected: Int,
       contentToMap: Map[String, Int]
@@ -346,5 +379,7 @@ object EstimateRequestAnalyzer extends LazyLogging {
     return sortedMap
   }
 
+  //Checking if an input is a Character value only
   def isLetter(c: Char) = c.isLetter && c <= 'z'
+
 }

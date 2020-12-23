@@ -17,7 +17,7 @@ class EstimateRequestsAnalyzerTest extends AnyFunSuite{
         assert(EstimateRequestAnalyzer.informationBySchema(r.nextInt(), testArrayBuffer) == true)
     }
 
-    test("check if an input is a String value only") {
+    test("check if an input is a Character value only") {
         assert(EstimateRequestAnalyzer.isLetter(testString.charAt(r.nextInt(testString.length))) == true)
     }
     
@@ -43,7 +43,7 @@ class EstimateRequestsAnalyzerTest extends AnyFunSuite{
         assert(EstimateRequestAnalyzer.inputReader() == r.nextInt)
     }
 
-    test("sort the map in three ordering options and return ListMap") {
+    test("sort a map in three ordering options and return a sorted ListMap") {
         val testMap = Map[String, Int]("a" -> 1, "b" -> 2, "c" -> 3)
         val testResultListMap = ListMap[String, Int]("c" -> 3, "b" -> 2, "a" -> 1)
         assert(EstimateRequestAnalyzer.schemaSort(3, testMap) == testResultListMap)

@@ -1,5 +1,5 @@
 # Estimate Requests Analyzer
-A simple application to grab data from the **Eestimate Requests Submission(ERS).csv** file and to analyze the data at user's disposal. Users have an option to save the analyzed data into .csv file.
+A simple application to grab data from the **ERS(Eestimate Requests Submission).csv** file and to analyze the data at user's disposal. Users have an option to save the analyzed data into .csv file.
 
 ## Objective
 - For businesses whose majority of leads come from estimate requests via email or a website, it is very crucial to save the submitted requests in an organized form and analyze them for marketing/budgeting purposes. With the help of this application, businesses can now see how many requests have been submitted by month, by car make or model, and by a type of a vehicle.
