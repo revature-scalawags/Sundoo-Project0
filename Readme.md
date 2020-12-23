@@ -16,6 +16,14 @@ A simple application to grab data from the **ERS(Eestimate Requests Submission).
 - Users can get the information of how many requests are submitted by month, by car make, by car model, and by a type of a vehicle
 - Users can get the percentage of a specific car make's submissions out of the total submissions
 
+## Features
+- Shows a list of files in a directory
+- Goes through the entire file line by line and exclude any empty rows or empty columns
+- Catches most, if not all, of errors or exceptions when users type in invalid type input and re-prompt users to type in valid input
+- Allows users to select information of how many requests are submitted by month, by car make, by car model, and by a vehicle type
+- Calcuate the percentage of a specific car make's submissions out of the total submissions
+- Gives users an option to save the result in .csv file or in mongoDB
+
 ## Commands
 - Please use the following commands in order to properly compile, test, and run the application.
 
