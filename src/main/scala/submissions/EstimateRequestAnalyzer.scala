@@ -1,8 +1,6 @@
 package submissions
 
-import scala.collection.mutable.ArrayBuffer
-import scala.collection.mutable.ListBuffer
-import scala.collection.mutable.Map
+import scala.collection.mutable.{ArrayBuffer, ListBuffer, Map}
 import io.Source._
 import scala.collection.immutable.ListMap
 import java.io.{BufferedWriter, FileWriter}
@@ -28,7 +26,7 @@ object EstimateRequestAnalyzer extends LazyLogging {
     }
   }
 
-  def estimateRequestAnalyzer(): Unit = {
+  def estimateRequestAnalyzer(): Boolean = {
     logger.warn("Calling the estimateRequestAnalyzer method")
     logger.error("Calling the estimateRequestAnalyzer method")
     println("\n\n")
@@ -86,27 +84,29 @@ object EstimateRequestAnalyzer extends LazyLogging {
 
     println()
     schemaSelected match {
-      case 1 => informationBySchema(1)
-      case 2 => informationBySchema(2)
-      case 3 => informationBySchema(3)
-      case 4 => informationBySchema(4)
-      case 5 => informationBySchema(5)
-      case 6 => informationBySchema(6)
-      case _ => informationBySchema(0)
+      case 1 => informationBySchema(1, lineToArrayBuffer)
+      case 2 => informationBySchema(2, lineToArrayBuffer)
+      case 3 => informationBySchema(3, lineToArrayBuffer)
+      case 4 => informationBySchema(4, lineToArrayBuffer)
+      case 5 => informationBySchema(5, lineToArrayBuffer)
+      case 6 => informationBySchema(6, lineToArrayBuffer)
+      case _ => informationBySchema(0, lineToArrayBuffer)
     }
+    return true
+  }
 
-    def informationBySchema(schema: Int): Unit = {
+    def informationBySchema(schema: Int, lines: ArrayBuffer[String]): Boolean = {
       //Catching any exception or errors
       if (schema < 1 || schema > 6) {
         print("No such schema is found. Type in a number again: ")
-        informationBySchema(inputReader())
+        informationBySchema(inputReader(), lines)
       } else {
         println("Fetching the information you requested...")
         println()
 
         //Storing the information fetched from the selected column into an ArrayBuffer
         var columnSelectedToArray = ArrayBuffer[String]()
-        for (i <- lineToArrayBuffer) {
+        for (i <- lines) {
           val outOfBoundExceptionCheck = i.split(",", -1).length
           if (outOfBoundExceptionCheck > 1) { //Making sure each line contains at least two columns - Name of the info & # of requests submitted
             val column = i.split(",", -1)(schema - 1).toUpperCase()
@@ -165,7 +165,6 @@ object EstimateRequestAnalyzer extends LazyLogging {
         )
 
         //Making sure that the user input is String value only
-        def isLetter(c: Char) = c.isLetter && c <= 'z'
         var carMakeTyped = inputStringReader()
         var isLetterCheck: Boolean = true
         carMakeTyped.foreach(x =>
@@ -214,8 +213,10 @@ object EstimateRequestAnalyzer extends LazyLogging {
           )
         }
       }
+      return true
     }
-  }
+
+  //Getting the percentage value  of a specific car make's requests out of total requests
   def percentageCalculator(num1: Int, num2: Int, string: String): Double = {
 
     val percentage = (num1.toFloat / num2.toFloat) * 100
@@ -230,7 +231,8 @@ object EstimateRequestAnalyzer extends LazyLogging {
     return percentage
   }
 
-  def saveToCSV(list1: ListBuffer[String], list2: ListBuffer[String]): Unit = {
+  //Saving the information of a selected schema's list and the requests submitted into .csv file
+  def saveToCSV(list1: ListBuffer[String], list2: ListBuffer[String]): Boolean = {
 
     println(
       "Before you quit, do you want to save this information into .csv file?\n" +
@@ -259,9 +261,10 @@ object EstimateRequestAnalyzer extends LazyLogging {
       csvWriter.writeAll((fileSchema +: rows).map(_.toArray).asJava)
       outputFile.close()
     }
+    return true
   }
 
-  def saveToCSV(num1: Int, num2: Int, string: String): Unit = {
+  def saveToCSV(num1: Int, num2: Int, string: String): Boolean = {
 
     println(
       "Before you quit, do you want to save this information into .csv file?\n" +
@@ -299,6 +302,7 @@ object EstimateRequestAnalyzer extends LazyLogging {
       csvWriter.writeAll(listOfValues.asJava)
       outputFile.close()
     }
+    return true
   }
 
   def inputStringReader(): String = {
@@ -341,4 +345,6 @@ object EstimateRequestAnalyzer extends LazyLogging {
     }
     return sortedMap
   }
+
+  def isLetter(c: Char) = c.isLetter && c <= 'z'
 }
